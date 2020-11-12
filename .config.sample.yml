@@ -1,0 +1,15 @@
+storage_path: '~/Documents/LectureBacker'
+destreamer:
+  path: 'path to destreamer root folder'
+  output: './videos/'
+  args: '-u student email'
+  format: '{publishDate}_{publishTime}_{author}_{uniqueId}'
+ffmpeg:
+  args: ' -vcodec libx265 -crf 28'
+  j: 8
+jobs:
+  path: './jobs'
+youtube:
+  client_secret: './client_secret.json'
+  credentials: './credentials.storage'
+verbosity: 'DEBUG'
