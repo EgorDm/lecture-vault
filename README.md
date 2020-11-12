@@ -7,8 +7,14 @@ It supports:
 * Adding additional metadata
 * Combining multiple lectures into one
 
+## Requirements
+* FFMPEG
+* destreamer
+* Google Cloud Youtube Data Api
+
 ## Installation
 * TODO
 
 ## Usage
 * TODO
+

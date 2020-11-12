@@ -1,4 +1,4 @@
-storage_path: '~/Documents/LectureBacker'
+storage_path: '~/Documents/LectureVault'
 destreamer:
   path: 'path to destreamer root folder'
   output: './videos/'
