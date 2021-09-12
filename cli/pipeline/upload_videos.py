@@ -1,5 +1,7 @@
 __all__ = ['upload_videos']
 
+import os
+
 from simple_youtube_api.Channel import Channel
 from simple_youtube_api.LocalVideo import LocalVideo
 
@@ -10,6 +12,9 @@ from cli.structures import Job
 def upload_videos(job: Job):
     video = job['video']
     metadata = job['metadata']
+
+    if not os.path.exists(video):
+        raise Exception('Given video does not exist')
 
     channel = Channel()
     channel.login(
@@ -23,7 +28,7 @@ def upload_videos(job: Job):
     video.set_title(f"[{metadata['course']}] {metadata['title']} - {metadata['subject']}")
     video.set_description(f"Recorded on {metadata['date']}")
     video.set_default_language("en-US")
-    video.set_privacy_status("private")
+    video.set_privacy_status("unlisted")
 
     video = channel.upload_video(video)
     channel.add_video_to_playlist(playlist_id, video)
@@ -62,7 +67,7 @@ def get_or_create_playlist(name: str, channel: Channel) -> str:
                 description=name
             ),
             status=dict(
-                privacyStatus='private'
+                privacyStatus='unlisted'
             )
         )
     ).execute()

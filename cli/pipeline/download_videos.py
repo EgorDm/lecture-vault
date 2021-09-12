@@ -19,4 +19,4 @@ def download_videos(job: Job):
     click.echo('Starting video download')
     os.system(f'node {settings.destreamer_exec()} {args} -i {inputs} -o {output_dir}')
 
-    return sorted([os.path.abspath(p) for p in os.listdir(output_dir)])
+    return sorted([os.path.join(output_dir, p) for p in os.listdir(output_dir)])
